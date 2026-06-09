@@ -1,0 +1,92 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0ea5e9 100%);
+  padding: 1rem;
+}
+
+.login-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+
+.login-brand h1 {
+  font-size: 2.5rem;
+  color: #0ea5e9;
+  margin-bottom: 0.5rem;
+}
+
+.login-brand p {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.login-form input {
+  padding: 0.85rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.login-form input:focus {
+  outline: 2px solid #0ea5e9;
+  border-color: transparent;
+}
+
+.login-form button[type='submit'] {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login-form button[type='submit']:hover {
+  background: #0284c7;
+}
+
+.login-form button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+.login-toggle {
+  margin-top: 1.5rem;
+  background: none;
+  border: none;
+  color: #0ea5e9;
+  font-size: 0.95rem;
+  width: 100%;
+  text-align: center;
+}
+
+.login-toggle:hover {
+  text-decoration: underline;
+}
+
+.login-demo {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}

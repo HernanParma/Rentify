@@ -1,0 +1,105 @@
+.reservation-dates-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1040;
+  padding: 1rem;
+}
+
+.reservation-dates-modal {
+  background: white;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  padding: 1.25rem;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+
+.reservation-dates-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #475569;
+  cursor: pointer;
+}
+
+.reservation-dates-header {
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+}
+
+.reservation-dates-header h2 {
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+
+.reservation-dates-header p {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.reservation-dates-times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.reservation-dates-times label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.reservation-dates-times input {
+  padding: 0.45rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.reservation-dates-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.reservation-dates-cancel {
+  flex: 1;
+  padding: 0.65rem;
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reservation-dates-confirm {
+  flex: 1;
+  padding: 0.65rem;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reservation-dates-confirm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

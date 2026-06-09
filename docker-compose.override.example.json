@@ -1,0 +1,7 @@
+{
+  "_comment": "Si usás SQL Server en Docker, actualizá ConnectionStrings en cada microservicio:",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost,1433;Database=NOMBRE_DB;User Id=sa;Password=Rentify@123456;TrustServerCertificate=True;",
+    "AuthMS_ConnectionString": "Server=localhost,1433;Database=Autenticacion;User Id=sa;Password=Rentify@123456;TrustServerCertificate=True;"
+  }
+}

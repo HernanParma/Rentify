@@ -1,0 +1,137 @@
+.reservations-page {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.reservations-header {
+  background: #0f172a;
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.reservations-header a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.reservations-content {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.res-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.res-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.res-card-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.res-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.res-remove-btn:hover {
+  color: #dc2626;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.res-status {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.res-id {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.res-card p {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.25rem;
+}
+
+.res-cost {
+  margin-top: 0.5rem !important;
+  font-size: 1rem !important;
+  color: #0ea5e9 !important;
+}
+
+.res-pay-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #0ea5e9;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.res-cancel-btn {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background: transparent;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.res-cancel-btn:hover:not(:disabled) {
+  background: #fef2f2;
+}
+
+.res-cancel-btn:disabled {
+  opacity: 0.6;
+}
+
+.res-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #64748b;
+}
+
+.res-empty a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0ea5e9;
+}
+
+.res-error {
+  color: #dc2626;
+  text-align: center;
+}
