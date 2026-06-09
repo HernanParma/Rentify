@@ -8,11 +8,16 @@ namespace Rentify.Shared;
 
 public static class JwtAuthExtensions
 {
-    public const string DevJwtKey = "RentifySecretKey2024Minimo32Caracteres!";
-
     public static IServiceCollection AddRentifyJwtAuth(this IServiceCollection services, IConfiguration configuration)
     {
-        var jwtKey = configuration["JwtSettings:key"] ?? DevJwtKey;
+        var jwtKey = configuration["JwtSettings:key"]
+            ?? Environment.GetEnvironmentVariable("RENTIFY_JWT_KEY");
+
+        if (string.IsNullOrWhiteSpace(jwtKey))
+        {
+            throw new InvalidOperationException(
+                "JwtSettings:key no está configurada. Ejecutá .\\setup-secrets.ps1 o definí RENTIFY_JWT_KEY.");
+        }
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

@@ -1,0 +1,5 @@
+{
+  "JwtSettings": {
+    "key": "REEMPLAZAR_CON_CLAVE_GENERADA_POR_SETUP_SECRETS"
+  }
+}

@@ -10,6 +10,15 @@ $services = @(
     @{ Name = "ApiGateway";      Path = "$root\ApiGateway";             Port = 5000 }
 )
 
+$localSecrets = @(
+    "$root\AuthMS\AuthMS\appsettings.Local.json",
+    "$root\VehicleMS\VehicleMS\appsettings.Local.json"
+)
+if ($localSecrets | Where-Object { -not (Test-Path $_) }) {
+    Write-Host "Faltan secretos locales. Ejecutá primero: .\setup-secrets.ps1" -ForegroundColor Red
+    exit 1
+}
+
 Write-Host "Iniciando Rentify..." -ForegroundColor Cyan
 Write-Host "Se abrira una ventana por servicio. NO las cierres mientras uses la app." -ForegroundColor Yellow
 Write-Host ""

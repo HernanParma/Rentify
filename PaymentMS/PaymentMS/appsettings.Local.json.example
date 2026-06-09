@@ -1,0 +1,7 @@
+{
+  "MercadoPago": {
+    "AccessToken": "",
+    "UseMockPayments": true,
+    "BackUrlBase": "http://localhost:5173"
+  }
+}

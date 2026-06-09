@@ -19,7 +19,13 @@ Aplicación de alquiler de vehículos dividida en microservicios .NET 8 con fron
 1. **.NET 8 SDK** — [Descargar](https://dotnet.microsoft.com/download)
 2. **SQL Server** — LocalDB o SQL Server Express (debe estar corriendo)
 3. **Node.js 18+** — Para el frontend
-4. **Certificado HTTPS de desarrollo** (una sola vez):
+4. **Secretos locales** (obligatorio la primera vez):
+   ```powershell
+   cd c:\Users\herna\Desktop\PROYECTOS\Rentify
+   .\setup-secrets.ps1
+   ```
+   Genera `appsettings.Local.json` en cada microservicio (no se sube a Git) y configura User Secrets de AuthMS.
+5. **Certificado HTTPS de desarrollo** (una sola vez):
    ```powershell
    dotnet dev-certs https --trust
    ```
@@ -107,32 +113,25 @@ Login → Mapa de sedes → Elegir auto → Reservar (fechas)
 
 Se crean automáticamente al iniciar AuthMS en modo Development.
 
-## Mercado Pago (pagos reales)
+## Secretos y configuración sensible
 
-Para que el checkout funcione necesitás un **Access Token de prueba** de Mercado Pago:
+**No commitear** claves JWT, tokens de Mercado Pago ni contraseñas de base de datos.
 
-1. Creá cuenta en [Mercado Pago Developers](https://www.mercadopago.com.ar/developers)
-2. Obtené tu **Test Access Token**
-3. Configuralo en `PaymentMS/PaymentMS/appsettings.json`:
-   ```json
-   "MercadoPago": {
-     "AccessToken": "TU_TOKEN_DE_PRUEBA",
-     "BackUrlBase": "http://localhost:5173"
-   }
-   ```
-4. Usá [tarjetas de prueba de MP](https://www.mercadopago.com.ar/developers/es/docs/checkout-pro/additional-content/test-cards) para simular pagos
+| Archivo | En Git | Uso |
+|---------|--------|-----|
+| `appsettings.json` | Sí | Valores por defecto sin secretos |
+| `appsettings.Local.json.example` | Sí | Plantilla |
+| `appsettings.Local.json` | **No** | Secretos locales (`.\setup-secrets.ps1`) |
+| `frontend/.env` | **No** | Variables del frontend |
+| `frontend/.env.example` | Sí | Plantilla |
 
-Sin token válido, la reserva se crea pero el botón de pago fallará.
+### Mercado Pago (pagos reales)
 
-## Configuración AuthMS (User Secrets)
+Por defecto `UseMockPayments: true`. Para pagos de prueba reales, editá `PaymentMS/PaymentMS/appsettings.Local.json` con tu [Test Access Token](https://www.mercadopago.com.ar/developers) y `"UseMockPayments": false`.
 
-AuthMS requiere JWT key y connection string en User Secrets (modo DEBUG):
+### Rotación de claves
 
-```powershell
-cd AuthMS\AuthMS
-dotnet user-secrets set "JwtSettings:key" "RentifySecretKey2024Minimo32Caracteres!"
-dotnet user-secrets set "ConnectionString" "Server=localhost;Database=Autenticacion;Trusted_Connection=True;TrustServerCertificate=True;"
-```
+Si una clave estuvo en GitHub, generá una nueva: borrá los `appsettings.Local.json` y ejecutá `.\setup-secrets.ps1` de nuevo. El historial de Git puede conservar secretos antiguos; en repos públicos conviene rotar credenciales.
 
 ## Bases de datos
 
@@ -187,7 +186,8 @@ Rentify/
 | Problema | Solución |
 |----------|----------|
 | Error SSL / certificado | `dotnet dev-certs https --trust` |
-| AuthMS no arranca | Configurar User Secrets (ver arriba) |
+| AuthMS no arranca | Ejecutar `.\setup-secrets.ps1` |
+| JwtSettings:key no configurada | Ejecutar `.\setup-secrets.ps1` |
 | Mapa vacío | Verificar que VehicleMS y BranchOfficeMS estén corriendo |
 | Error al reservar | ReservationMS necesita VehicleMS activo |
 | Error al pagar | Configurar token de Mercado Pago |
